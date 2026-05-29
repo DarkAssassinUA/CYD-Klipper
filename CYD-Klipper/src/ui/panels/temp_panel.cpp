@@ -25,7 +25,7 @@ lv_obj_t* root_panel;
 static void update_printer_data_hotend_temp(lv_event_t * e){
     lv_obj_t * label = lv_event_get_target(e);
     char hotend_buff[40];
-    sprintf(hotend_buff, "Hotend: %.0f C (Target: %.0f C)", 
+    sprintf(hotend_buff, "Сопло: %.0f C (Цель: %.0f C)", 
         get_current_printer_data()->temperatures[PrinterTemperatureDeviceIndex::PrinterTemperatureDeviceIndexNozzle1], 
         get_current_printer_data()->target_temperatures[PrinterTemperatureDeviceIndex::PrinterTemperatureDeviceIndexNozzle1]);
     lv_label_set_text(label, hotend_buff);
@@ -34,7 +34,7 @@ static void update_printer_data_hotend_temp(lv_event_t * e){
 static void update_printer_data_bed_temp(lv_event_t * e){
     lv_obj_t * label = lv_event_get_target(e);
     char bed_buff[40];
-    sprintf(bed_buff, "Bed: %.0f C (Target: %.0f C)", 
+    sprintf(bed_buff, "Стол: %.0f C (Цель: %.0f C)", 
         get_current_printer_data()->temperatures[PrinterTemperatureDeviceIndex::PrinterTemperatureDeviceIndexBed], 
         get_current_printer_data()->target_temperatures[PrinterTemperatureDeviceIndex::PrinterTemperatureDeviceIndexBed]);
     lv_label_set_text(label, bed_buff);
@@ -120,12 +120,12 @@ static void keyboard_callback(lv_event_t * e){
 
 static void show_keyboard_with_hotend(lv_event_t * e){
     keyboard_target = TARGET_HOTEND;
-    lv_create_keyboard_text_entry(keyboard_callback, "Set Hotend Temp");
+    lv_create_keyboard_text_entry(keyboard_callback, "Температура сопла");
 }
 
 static void show_keyboard_with_bed(lv_event_t * e){
     keyboard_target = TARGET_BED;
-    lv_create_keyboard_text_entry(keyboard_callback, "Set Bed Temp");
+    lv_create_keyboard_text_entry(keyboard_callback, "Температура стола");
 }
 
 static void cooldown_temp(lv_event_t * e){
@@ -150,7 +150,7 @@ static void set_temp_via_preset(lv_event_t * e){
 
     if (temp_edit_mode) {
         keyboard_target = (temp_target)target;
-        lv_create_keyboard_text_entry(keyboard_callback, "Set Preset Temp");
+        lv_create_keyboard_text_entry(keyboard_callback, "Температура пресета");
         return;
     }
 
@@ -288,7 +288,7 @@ void create_temp_buttons(lv_obj_t * root, lv_obj_t * panel)
         lv_obj_set_height(btn, CYD_SCREEN_MIN_BUTTON_HEIGHT_PX);
 
         label = lv_label_create(btn);
-        lv_label_set_text(label, "Set");
+        lv_label_set_text(label, "Задать");
         lv_obj_center(label);
     }
 }
@@ -340,7 +340,7 @@ void temp_panel_init(lv_obj_t * panel){
     lv_obj_set_height(btn, CYD_SCREEN_MIN_BUTTON_HEIGHT_PX);
 
     lv_obj_t * label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_DOWN " Extrude");
+    lv_label_set_text(label, LV_SYMBOL_DOWN " Экструзия");
     lv_obj_center(label);
 
     btn = lv_btn_create(one_above_bottom_panel);
@@ -349,7 +349,7 @@ void temp_panel_init(lv_obj_t * panel){
     lv_obj_set_height(btn, CYD_SCREEN_MIN_BUTTON_HEIGHT_PX);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_UP " Retract");
+    lv_label_set_text(label, LV_SYMBOL_UP " Откат");
     lv_obj_center(label);
 
     btn = lv_btn_create(bottom_panel);
@@ -358,7 +358,7 @@ void temp_panel_init(lv_obj_t * panel){
     lv_obj_set_height(btn, CYD_SCREEN_MIN_BUTTON_HEIGHT_PX);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, "Cooldown");
+    lv_label_set_text(label, "Охладить");
     lv_obj_center(label);
 
     btn = lv_btn_create(one_above_bottom_panel);
@@ -368,7 +368,7 @@ void temp_panel_init(lv_obj_t * panel){
     lv_obj_add_flag(btn, LV_OBJ_FLAG_CHECKABLE);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, "Edit Presets");
+    lv_label_set_text(label, "Пресеты");
     lv_obj_center(label);
 
     lv_obj_scroll_to_y(root_temp_panel, 9999, LV_ANIM_OFF);

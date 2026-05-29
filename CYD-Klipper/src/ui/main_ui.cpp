@@ -32,10 +32,10 @@ static void on_state_change(void * s, lv_msg_t * m){
         nav_buttons_setup(PANEL_ERROR);
     }
     else if (printer->state == PrinterState::PrinterStateIdle) {
-        nav_buttons_setup(PANEL_FILES);
+        nav_buttons_setup(PANEL_DASHBOARD);
     }
     else {
-        nav_buttons_setup(PANEL_PROGRESS);
+        nav_buttons_setup(PANEL_DASHBOARD);
     }
 }
 

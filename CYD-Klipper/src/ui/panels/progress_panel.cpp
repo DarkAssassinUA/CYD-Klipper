@@ -36,14 +36,14 @@ static void update_printer_data_stats(lv_event_t * e){
     switch (get_current_printer()->printer_config->show_stats_on_progress_panel)
     {
         case SHOW_STATS_ON_PROGRESS_PANEL_LAYER:
-            sprintf(buff, "Layer %d of %d", get_current_printer_data()->current_layer, get_current_printer_data()->total_layers);
+            sprintf(buff, "Слой %d из %d", get_current_printer_data()->current_layer, get_current_printer_data()->total_layers);
             break;
         case SHOW_STATS_ON_PROGRESS_PANEL_PARTIAL:
-            sprintf(buff, "Position: X%.2f Y%.2f\nFeedrate: %d mm/s\nFilament Used: %.2f m\nLayer %d of %d", 
+            sprintf(buff, "Коорд.: X%.2f Y%.2f\nСкорость: %d мм/с\nПластик: %.2f м\nСлой %d из %d", 
             get_current_printer_data()->position[0], get_current_printer_data()->position[1], get_current_printer_data()->feedrate_mm_per_s, get_current_printer_data()->filament_used_mm / 1000, get_current_printer_data()->current_layer, get_current_printer_data()->total_layers);
             break;
         case SHOW_STATS_ON_PROGRESS_PANEL_ALL:
-            sprintf(buff, "Pressure Advance: %.3f (%.2fs)\nPosition: X%.2f Y%.2f Z%.2f\nFeedrate: %d mm/s\nFilament Used: %.2f m\nFan: %.0f%%\nSpeed: %.0f%%\nFlow: %.0f%%\nLayer %d of %d", 
+            sprintf(buff, "PA: %.3f (%.2fs)\nКоорд.: X%.2f Y%.2f Z%.2f\nСкорость: %d мм/с\nПластик: %.2f м\nВентилятор: %.0f%%\nСкорость: %.0f%%\nПоток: %.0f%%\nСлой %d из %d", 
             get_current_printer_data()->pressure_advance, get_current_printer_data()->smooth_time, get_current_printer_data()->position[0], get_current_printer_data()->position[1], get_current_printer_data()->position[2], get_current_printer_data()->feedrate_mm_per_s, get_current_printer_data()->filament_used_mm / 1000, get_current_printer_data()->fan_speed * 100, get_current_printer_data()->speed_mult * 100, get_current_printer_data()->extrude_mult * 100, get_current_printer_data()->current_layer, get_current_printer_data()->total_layers);
             break;
     }
@@ -88,7 +88,7 @@ void progress_panel_init(lv_obj_t* panel){
         lv_obj_set_style_bg_color(btn, lv_color_hex(0xFF0000), LV_PART_MAIN);
 
         lv_obj_t * label = lv_label_create(btn);
-        lv_label_set_text(label, LV_SYMBOL_POWER " EMERGENCY STOP");
+        lv_label_set_text(label, LV_SYMBOL_POWER " ЭКСТР. СТОП");
         lv_obj_center(label);
     }
 

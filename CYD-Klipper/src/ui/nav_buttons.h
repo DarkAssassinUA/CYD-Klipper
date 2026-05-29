@@ -11,6 +11,7 @@ enum PANEL_TYPE {
     PANEL_ERROR = 7,
     PANEL_CONNECTING = 8,
     PANEL_PROGRESS = 9,
+    PANEL_DASHBOARD = 10,
 };
 
 void nav_buttons_setup(PANEL_TYPE active_panel);

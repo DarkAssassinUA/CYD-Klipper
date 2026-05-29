@@ -1,0 +1,9 @@
+{
+    "Configurations": [
+        {
+            "Board": "esp32-3248S035R",
+            "Version": "v3.0.0",
+            "URL": "https://raw.githubusercontent.com/DarkAssassinUA/CYD-Klipper/master/out/esp32-3248S035R/firmware.bin"
+        }
+    ]
+}

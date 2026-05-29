@@ -42,7 +42,7 @@ static void btn_print_file_verify(lv_event_t * e)
     lv_layout_flex_column(panel, LV_FLEX_ALIGN_CENTER);
 
     lv_obj_t * label_print_file = lv_label_create(panel);
-    lv_label_set_text(label_print_file, "Print File");
+    lv_label_set_text(label_print_file, "Печать файла");
 
     lv_obj_t * top_panel = lv_create_empty_panel(panel);
     lv_obj_set_width(top_panel, LV_PCT(100));
@@ -91,7 +91,7 @@ static void btn_print_file_verify(lv_event_t * e)
     lv_obj_add_event_cb(btn, destroy_event_user_data, LV_EVENT_CLICKED, panel);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_CLOSE " Cancel");
+    lv_label_set_text(label, LV_SYMBOL_CLOSE " Отмена");
     lv_obj_center(label);
 
     btn = lv_btn_create(buttons_panel);
@@ -101,7 +101,7 @@ static void btn_print_file_verify(lv_event_t * e)
     lv_obj_add_event_cb(btn, destroy_event_user_data, LV_EVENT_CLICKED, panel);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_OK " Print");
+    lv_label_set_text(label, LV_SYMBOL_OK " Печать");
     lv_obj_center(label);
 }
 
@@ -110,7 +110,7 @@ void files_panel_init(lv_obj_t* panel){
 
     if (!files.success || files.count <= 0){
         lv_obj_t * label = lv_label_create(panel);
-        lv_label_set_text(label, "Failed to read files.");
+        lv_label_set_text(label, "Ошибка чтения файлов.");
         lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
         return;
     }

@@ -8,7 +8,7 @@
 #include "../core/semaphore.h"
 
 //const char *ota_url = "https://gist.githubusercontent.com/suchmememanyskill/ece418fe199e155340de6c224a0badf2/raw/0d6762d68bc807cbecc71e40d55b76692397a7b3/update.json"; // Test url
-const char *ota_url = "https://suchmememanyskill.github.io/CYD-Klipper/OTA.json"; // Prod url
+const char *ota_url = "https://raw.githubusercontent.com/DarkAssassinUA/CYD-Klipper/master/OTA.json"; // Prod url
 ESP32OTAPull ota_pull;
 static bool update_available;
 static bool ready_for_ota_update = false;
@@ -56,7 +56,7 @@ void ota_do_update(bool variant_automatic)
     lv_layout_flex_column(panel, LV_FLEX_ALIGN_CENTER);
 
     lv_obj_t *label = lv_label_create(panel);
-    lv_label_set_text(label, "Updating OTA...");
+    lv_label_set_text(label, "Обновление OTA...");
 
     percentage_bar = lv_bar_create(panel);
     lv_obj_set_size(percentage_bar, CYD_SCREEN_WIDTH_PX - CYD_SCREEN_GAP_PX * 3, CYD_SCREEN_MIN_BUTTON_HEIGHT_PX * 0.75f);

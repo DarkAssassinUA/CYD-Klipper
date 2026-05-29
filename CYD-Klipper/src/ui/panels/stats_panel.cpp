@@ -106,7 +106,7 @@ void stats_panel_init(lv_obj_t* panel) {
         lv_obj_add_event_cb(btn, swap_to_files_menu, LV_EVENT_CLICKED, NULL);
 
         lv_obj_t * label = lv_label_create(btn);
-        lv_label_set_text(label, "Files");
+        lv_label_set_text(label, "Файлы");
         lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
     }
 

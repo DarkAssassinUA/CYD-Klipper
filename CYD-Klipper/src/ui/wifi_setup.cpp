@@ -47,7 +47,7 @@ void ask_reuse_password(const char * ssid){
     lv_layout_flex_column(root, LV_FLEX_ALIGN_SPACE_BETWEEN);
 
     lv_obj_t * label = lv_label_create(root);
-    lv_label_set_text_fmt(label, "Reuse stored WiFi Password?\n(Password Length: %d)", strlen(global_config.wifi_password));
+    lv_label_set_text_fmt(label, "Использовать сохраненный пароль WiFi?\n(Длина: %d)", strlen(global_config.wifi_password));
 
     lv_obj_t * button_row = lv_create_empty_panel(root);
     lv_layout_flex_row(button_row, LV_FLEX_ALIGN_SPACE_BETWEEN);
@@ -125,7 +125,7 @@ static void wifi_btn_settings(lv_event_t * e){
     lv_obj_set_size(btn, LV_PCT(100), CYD_SCREEN_MIN_BUTTON_HEIGHT_PX);
 
     lv_obj_t * label = lv_label_create(btn);
-    lv_label_set_text(label, "Return to WiFi Setup");
+    lv_label_set_text(label, "К настройкам WiFi");
     lv_obj_center(label);
 
     settings_section_device(panel);
@@ -148,7 +148,7 @@ void wifi_init_inner(){
         LOG_F(("Connecting to %s with a password length of %d\n", global_config.wifi_SSID, strlen(global_config.wifi_password)))
 
         lv_obj_t * label = lv_label_create(lv_scr_act());
-        lv_label_set_text(label, "Connecting to WiFi");
+        lv_label_set_text(label, "Подключение к WiFi");
         lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 
         lv_obj_t * resetBtn = lv_btn_create(lv_scr_act());
@@ -157,14 +157,14 @@ void wifi_init_inner(){
         lv_obj_align(resetBtn, LV_ALIGN_CENTER, 0, CYD_SCREEN_GAP_PX + CYD_SCREEN_MIN_BUTTON_HEIGHT_PX);
 
         label = lv_label_create(resetBtn);
-        lv_label_set_text(label, "Reset");
+        lv_label_set_text(label, "Сброс");
         lv_obj_center(label);
 
         return;
     } 
 
     lv_obj_t * label = lv_label_create(lv_scr_act());
-    lv_label_set_text(label, "Scanning for networks...");
+    lv_label_set_text(label, "Поиск сетей...");
     lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 
     lv_timer_handler();
@@ -183,7 +183,7 @@ void wifi_init_inner(){
     lv_layout_flex_row(top_row);
 
     label = lv_label_create(top_row);
-    lv_label_set_text(label, "Select a network");
+    lv_label_set_text(label, "Выберите сеть");
     lv_obj_set_flex_grow(label, 1);
 
     lv_obj_t * btn = lv_btn_create(top_row);
@@ -199,7 +199,7 @@ void wifi_init_inner(){
     lv_obj_set_size(btn, CYD_SCREEN_MIN_BUTTON_WIDTH_PX * 1.5, CYD_SCREEN_MIN_BUTTON_HEIGHT_PX);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, "Skip");
+    lv_label_set_text(label, "Пропустить");
     lv_obj_center(label);
 
     btn = lv_btn_create(top_row);

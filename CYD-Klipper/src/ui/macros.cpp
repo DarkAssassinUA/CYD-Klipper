@@ -101,7 +101,7 @@ void macros_draw_power_fullscreen(BasePrinter* printer)
     lv_obj_add_event_cb(btn, destroy_event_user_data, LV_EVENT_CLICKED, parent);
 
     lv_obj_t * label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_CLOSE " Close");
+    lv_label_set_text(label, LV_SYMBOL_CLOSE " Закрыть");
     lv_obj_center(label);
 
     macros_add_power_devices_to_panel(parent, printer);

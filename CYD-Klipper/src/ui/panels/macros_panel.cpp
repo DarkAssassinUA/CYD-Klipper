@@ -16,7 +16,7 @@ void macros_panel_init(lv_obj_t* panel) {
     lv_obj_align(btn, LV_ALIGN_TOP_MID, 0, CYD_SCREEN_GAP_PX);
 
     lv_obj_t * label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_SETTINGS " Screen Settings");
+    lv_label_set_text(label, LV_SYMBOL_SETTINGS " Настр. экрана");
     lv_obj_center(label);
 
     lv_obj_t * root_panel = lv_create_empty_panel(panel);
@@ -33,11 +33,11 @@ void macros_panel_init(lv_obj_t* panel) {
         if (get_current_printer()->printer_config->printer_type == PrinterType::PrinterTypeKlipper
             || get_current_printer()->printer_config->printer_type == PrinterType::PrinterTypeKlipperSerial)
         {
-            lv_label_set_text(label, "No macros found.\nMacros with the description\n\"CYD_SCREEN_MACRO\"\nwill show up here.");
+            lv_label_set_text(label, "Макросы не найдены.\nМакросы с описанием\n\"CYD_SCREEN_MACRO\"\nпоявятся здесь.");
         }
         else 
         {
-            lv_label_set_text(label, "No macros found.");
+            lv_label_set_text(label, "Макросы не найдены.");
         }
         
 

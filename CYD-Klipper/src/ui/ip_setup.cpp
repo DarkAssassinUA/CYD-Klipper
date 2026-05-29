@@ -95,7 +95,7 @@ void switch_printer_init() {
     lv_obj_add_event_cb(btn, destroy_event_user_data, LV_EVENT_CLICKED, parent);
 
     lv_obj_t * label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_CLOSE " Close");
+    lv_label_set_text(label, LV_SYMBOL_CLOSE " Закрыть");
     lv_obj_center(label);
 
     for (int i = 0; i < PRINTER_CONFIG_COUNT; i++){
@@ -198,11 +198,11 @@ static void keyboard_event_ip_entry(lv_event_t * e) {
             }
             else if (klipper_status == KlipperConnectionStatus::ConnectAuthRequired)
             {
-                lv_label_set_text(main_label, "Incorrect authorisation");
+                lv_label_set_text(main_label, "Ошибка авторизации");
             }
             else
             {
-                lv_label_set_text(main_label, "Failed to connect");
+                lv_label_set_text(main_label, "Ошибка подключения");
             }
         }
         else if (type == PrinterType::PrinterTypeBambuLocal)
@@ -215,11 +215,11 @@ static void keyboard_event_ip_entry(lv_event_t * e) {
             }
             else if (bambu_status == BambuConnectionStatus::BambuConnectSNFail)
             {
-                lv_label_set_text(main_label, "Incorrect serial number");
+                lv_label_set_text(main_label, "Неверный сер. номер");
             }
             else
             {
-                lv_label_set_text(main_label, "Incorrect IP/Access code");
+                lv_label_set_text(main_label, "Неверный IP/Код");
             }
         }
         else if (type == PrinterType::PrinterTypeOctoprint)
@@ -232,11 +232,11 @@ static void keyboard_event_ip_entry(lv_event_t * e) {
             }
             else if (octo_status == OctoConnectionStatus::OctoConnectKeyFail)
             {
-                lv_label_set_text(main_label, "Incorrect API key");
+                lv_label_set_text(main_label, "Неверный API ключ");
             }
             else
             {
-                lv_label_set_text(main_label, "Failed to connect");
+                lv_label_set_text(main_label, "Ошибка подключения");
             }
         }
     }
@@ -361,14 +361,14 @@ void show_ip_entry()
     switch (global_config.printer_config[global_config.printer_index].printer_type)
     {
         case PrinterType::PrinterTypeKlipper:
-            lv_label_set_text(main_label, "Klipper Setup");
+            lv_label_set_text(main_label, "Настройка Klipper");
             lv_textarea_set_max_length(port_entry, 5);
             lv_textarea_set_placeholder_text(host_entry, "Klipper host");
             lv_textarea_set_placeholder_text(port_entry, "Port");
             lv_textarea_set_placeholder_text(auth_entry, "Autorisation key (optional)");
             break;
         case PrinterType::PrinterTypeBambuLocal:
-            lv_label_set_text(main_label, "Bambu (Local) Setup");
+            lv_label_set_text(main_label, "Настройка Bambu");
             lv_obj_set_flex_grow(port_entry, 4);
             lv_obj_set_flex_grow(host_entry, 6);
             lv_textarea_set_max_length(port_entry, 8);
@@ -382,14 +382,14 @@ void show_ip_entry()
             lv_obj_clear_flag(auth_entry, LV_OBJ_FLAG_USER_2);
             lv_obj_add_flag(auth_entry, LV_OBJ_FLAG_USER_3);
             lv_textarea_set_max_length(auth_entry, 48);
-            lv_label_set_text(main_label, "Octoprint Setup");
+            lv_label_set_text(main_label, "Настройка Octoprint");
             lv_textarea_set_max_length(port_entry, 5);
             lv_textarea_set_placeholder_text(host_entry, "Octoprint Host");
             lv_textarea_set_placeholder_text(port_entry, "Port");
             lv_textarea_set_placeholder_text(auth_entry, "API key");
             break;
         case PrinterType::PrinterTypeKlipperSerial:
-            lv_label_set_text(main_label, "Klipper (Serial) Setup");
+            lv_label_set_text(main_label, "Настройка Klipper (Serial)");
             lv_obj_del(ip_row);
             lv_obj_del(auth_row);
             lv_obj_del(keyboard);
@@ -400,7 +400,7 @@ void show_ip_entry()
             
             label = lv_label_create(bottom_root);
             lv_obj_center(label);
-            lv_label_set_text(label, "Connect CYD-Klipper to a host\nrunning the CYD-Klipper server");
+            lv_label_set_text(label, "Подключите CYD-Klipper к хосту\nс запущенным сервером CYD-Klipper");
             break;
     }
 }
@@ -467,7 +467,7 @@ void choose_printer_type()
     lv_obj_clear_flag(root, LV_OBJ_FLAG_SCROLLABLE);
 
     lv_obj_t * label = lv_label_create(root);
-    lv_label_set_text(label, "Choose printer type");
+    lv_label_set_text(label, "Выберите тип принтера");
 
     create_printer_type_button(root, "Klipper (Wifi)", printer_type_klipper);
     create_printer_type_button(root, "Klipper (Serial/USB)", printer_type_serial_klipper, false);

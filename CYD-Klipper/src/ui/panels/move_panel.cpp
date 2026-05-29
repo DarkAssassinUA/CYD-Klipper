@@ -246,7 +246,7 @@ inline void root_panel_steppers_locked(lv_obj_t * root_panel){
     lv_obj_set_flex_grow(btn, 1);
 
     lv_obj_t * label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_HOME "Home");
+    lv_label_set_text(label, LV_SYMBOL_HOME "Домой");
     lv_obj_center(label);
 
     btn = lv_btn_create(home_button_row);
@@ -255,7 +255,7 @@ inline void root_panel_steppers_locked(lv_obj_t * root_panel){
     lv_obj_set_flex_grow(btn, 1);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_EYE_CLOSE "Free");
+    lv_label_set_text(label, LV_SYMBOL_EYE_CLOSE "Свобод.");
     lv_obj_center(label);
 
     btn = lv_btn_create(home_button_row);
@@ -264,7 +264,7 @@ inline void root_panel_steppers_locked(lv_obj_t * root_panel){
     lv_obj_set_flex_grow(btn, 1);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_SETTINGS "Param");
+    lv_label_set_text(label, LV_SYMBOL_SETTINGS "Парам.");
     lv_obj_center(label);
 
     btn = lv_btn_create(home_button_row);
@@ -317,7 +317,7 @@ inline void root_panel_steppers_unlocked(lv_obj_t * root_panel){
     lv_layout_flex_column(panel, LV_FLEX_ALIGN_CENTER);
 
     lv_obj_t * label = lv_label_create(panel);
-    lv_label_set_text(label, LV_SYMBOL_EYE_CLOSE " Steppers unlocked");
+    lv_label_set_text(label, LV_SYMBOL_EYE_CLOSE " Моторы откл.");
 
     lv_obj_t * btn_row = lv_create_empty_panel(panel);
     lv_obj_set_size(btn_row, CYD_SCREEN_PANEL_WIDTH_PX, CYD_SCREEN_MIN_BUTTON_HEIGHT_PX);
@@ -328,7 +328,7 @@ inline void root_panel_steppers_unlocked(lv_obj_t * root_panel){
     lv_obj_add_event_cb(btn, home_button_click, LV_EVENT_CLICKED, NULL);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_HOME "Home Axis");
+    lv_label_set_text(label, LV_SYMBOL_HOME "В начало");
     lv_obj_center(label);
 
     btn = lv_btn_create(btn_row);
@@ -336,7 +336,7 @@ inline void root_panel_steppers_unlocked(lv_obj_t * root_panel){
     lv_obj_add_event_cb(btn, switch_to_stat_panel, LV_EVENT_CLICKED, NULL);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, LV_SYMBOL_SETTINGS "Parameters");
+    lv_label_set_text(label, LV_SYMBOL_SETTINGS "Параметры");
     lv_obj_center(label);
 }
 

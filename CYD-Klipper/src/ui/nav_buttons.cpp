@@ -30,12 +30,12 @@ static void update_printer_data_time(lv_event_t * e){
     char time_buffer[10];
 
     if (get_current_printer_data()->state == PrinterState::PrinterStateIdle){
-        lv_label_set_text(label, "Idle");
+        lv_label_set_text(label, "Ждет");
         return;
     }
 
     if (get_current_printer_data()->state == PrinterState::PrinterStatePaused){
-        lv_label_set_text(label, "Paused");
+        lv_label_set_text(label, "Пауза");
         return;
     }
 
@@ -45,11 +45,11 @@ static void update_printer_data_time(lv_event_t * e){
     unsigned long seconds = (time % 3600) % 60;
 
     if (hours >= 10){
-        sprintf(time_buffer, "%luh", hours);
+        sprintf(time_buffer, "%luч", hours);
     } else if (hours >= 1){
-        sprintf(time_buffer, "%luh%02lum", hours, minutes);
+        sprintf(time_buffer, "%luч%02luм", hours, minutes);
     } else {
-        sprintf(time_buffer, "%lum", minutes);
+        sprintf(time_buffer, "%luм", minutes);
     }
 
     lv_label_set_text(label, time_buffer);
@@ -70,20 +70,20 @@ static void update_multi_printer_label(lv_event_t * e) {
 
     if (idle_count > 0)
     {
-        lv_label_set_text_fmt(label, "%d idle", idle_count);
+        lv_label_set_text_fmt(label, "%d ждет", idle_count);
     }
     else 
     {
-        lv_label_set_text(label, "Printer");
+        lv_label_set_text(label, "Принт.");
     }
 }
 
 static void btn_click_files(lv_event_t * e){
-    nav_buttons_setup(PANEL_FILES);
+    nav_buttons_setup(PANEL_DASHBOARD);
 }
 
 static void btn_click_progress(lv_event_t * e){
-    nav_buttons_setup(PANEL_PROGRESS);
+    nav_buttons_setup(PANEL_DASHBOARD);
 }
 
 static void btn_click_move(lv_event_t * e){
@@ -161,11 +161,11 @@ void nav_buttons_setup(PANEL_TYPE active_panel){
         // Files/Print
         if (get_current_printer_data()->state == PrinterState::PrinterStateIdle)
         {
-            create_button(LV_SYMBOL_COPY, "Idle", btn_click_files, update_printer_data_time, root_panel);
+            create_button(LV_SYMBOL_COPY, "Ждет", btn_click_files, update_printer_data_time, root_panel);
         }
         else 
         {
-            create_button(LV_SYMBOL_FILE, "Paused", btn_click_progress, update_printer_data_time, root_panel);
+            create_button(LV_SYMBOL_FILE, "Пауза", btn_click_progress, update_printer_data_time, root_panel);
         }
 
         // Move
@@ -176,20 +176,20 @@ void nav_buttons_setup(PANEL_TYPE active_panel){
     }
     else if (get_current_printer_data()->state == PrinterState::PrinterStateError) {
         // Error UI
-        create_button(LV_SYMBOL_WARNING, "Error", btn_click_err, NULL, root_panel);
+        create_button(LV_SYMBOL_WARNING, "Ошиб.", btn_click_err, NULL, root_panel);
     }
     else {
         // Connecting
-        create_button(LV_SYMBOL_REFRESH, "Link", btn_click_conn, NULL, root_panel);
+        create_button(LV_SYMBOL_REFRESH, "ЛИНК", btn_click_conn, NULL, root_panel);
     }
 
     // Macros
-    create_button(LV_SYMBOL_GPS, "Macro", btn_click_macros, NULL, root_panel);
+    create_button(LV_SYMBOL_GPS, "Макрос", btn_click_macros, NULL, root_panel);
 
     if (global_config.multi_printer_mode)
     {
         // Printers
-        create_button(LV_SYMBOL_HOME, "Printer", btn_click_printer, update_multi_printer_label, root_panel);
+        create_button(LV_SYMBOL_HOME, "Принт.", btn_click_printer, update_multi_printer_label, root_panel);
     }
 
     lv_obj_t * panel = lv_create_empty_panel(lv_scr_act());
@@ -226,6 +226,9 @@ void nav_buttons_setup(PANEL_TYPE active_panel){
             break;
         case PANEL_PROGRESS:
             progress_panel_init(panel);
+            break;
+        case PANEL_DASHBOARD:
+            dashboard_panel_init(panel);
             break;
     }
 
