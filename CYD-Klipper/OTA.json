@@ -2,7 +2,7 @@
     "Configurations": [
         {
             "Board": "esp32-3248S035R",
-            "Version": "v2.2.2 (e3d8477)",
+            "Version": "v2.2.2",
             "URL": "https://raw.githubusercontent.com/DarkAssassinUA/CYD-Klipper/master/out/esp32-3248S035R/firmware.bin"
         }
     ]
