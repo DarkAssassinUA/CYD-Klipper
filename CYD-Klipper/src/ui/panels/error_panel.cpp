@@ -46,7 +46,7 @@ void error_panel_init(lv_obj_t* panel)
 
     lv_obj_t * label;
     label = lv_label_create(panel);
-    lv_label_set_text(label, LV_SYMBOL_WARNING " Принтер не готов");
+    lv_label_set_text(label, LV_SYMBOL_WARNING " Printer is not ready");
 
     lv_obj_t * panel_with_text = lv_create_empty_panel(panel);
     lv_layout_flex_column(panel_with_text, LV_FLEX_ALIGN_START);

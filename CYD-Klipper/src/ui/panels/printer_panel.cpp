@@ -8,11 +8,11 @@
 #include "../macros.h"
 
 const char * printer_status[] = {
-    "Оффлайн",
+    "Offline",
     "Ошибка",
-    "Ожидание",
-    "Печать",
-    "Пауза"
+    "Idle",
+    "Printing",
+    "Paused"
 };
 
 const static lv_point_t line_points[] = { {0, 0}, {(short int)((CYD_SCREEN_PANEL_WIDTH_PX - CYD_SCREEN_GAP_PX * 2) * 0.85f), 0} };
@@ -33,7 +33,7 @@ static void update_printer_status_text(lv_event_t * e)
 
     if (config_index == get_current_printer_index())
     {
-        lv_label_set_text(label, "Управление");
+        lv_label_set_text(label, "In Control");
         return;
     }
 
@@ -97,11 +97,11 @@ static void update_printer_control_button_text(lv_event_t * e)
 
     if (printer->power_devices > 0 && (config_index == get_current_printer_index() || printer->state == PrinterState::PrinterStateOffline))
     {
-        lv_label_set_text(label, "Питание");
+        lv_label_set_text(label, "Power");
     }
     else
     {
-        lv_label_set_text(label, "Контроль");
+        lv_label_set_text(label, "Control");
     }
 }
 
@@ -172,7 +172,7 @@ static void btn_printer_rename(lv_event_t * e)
     int config_index = (int)lv_event_get_user_data(e);
     BasePrinter* printer = get_printer(config_index);
     keyboard_config = printer->printer_config;
-    lv_create_keyboard_text_entry(keyboard_callback, "Имя принтера", LV_KEYBOARD_MODE_TEXT_LOWER, CYD_SCREEN_WIDTH_PX * 0.75, 24, keyboard_config->printer_name, false);
+    lv_create_keyboard_text_entry(keyboard_callback, "Rename Printer", LV_KEYBOARD_MODE_TEXT_LOWER, CYD_SCREEN_WIDTH_PX * 0.75, 24, keyboard_config->printer_name, false);
 }
 
 static void btn_printer_activate(lv_event_t * e)
@@ -249,7 +249,7 @@ void create_printer_ui(int index, lv_obj_t * root)
     lv_obj_add_event_cb(btn, btn_printer_rename, LV_EVENT_CLICKED, (void*)index);
 
     label = lv_label_create(btn);
-    lv_label_set_text(label, "Переимен.");
+    lv_label_set_text(label, "Rename");
     lv_obj_center(label);
 
     btn = lv_btn_create(button_row);
@@ -290,7 +290,7 @@ void printer_panel_init(lv_obj_t* panel)
         lv_obj_add_event_cb(btn, btn_printer_add, LV_EVENT_CLICKED, NULL);
 
         lv_obj_t * label = lv_label_create(btn);
-        lv_label_set_text(label, "Доб. принтер");
+        lv_label_set_text(label, "Add Printer");
         lv_obj_center(label);
     }
 
